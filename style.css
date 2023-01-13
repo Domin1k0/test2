@@ -1,0 +1,165 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background: linear-gradient(
+     45deg,
+     rgb(175, 243, 86),
+     rgb(87, 152, 250) 
+     );
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    font-family: Helvetica, sans-serif;
+    justify-content: center;
+    min-height: 100vh;
+    min-width: 100vw; 
+    padding: 2rem;
+    overflow-x: hidden;          /* ukrycie suwaka poziomego */
+}
+
+h1{
+    font-size: 2rem;
+    margin:  2rem;
+    text-align: center;
+}
+
+.gallery{
+    background: linear-gradient( 
+     60deg,
+     rgba(255,255,255,0.1),
+     rgba(255,255,255,0.5)
+     );
+    border-radius: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    list-style-type: none;          /*usuniecie stylu "kropek z li" */
+    padding: 64px;
+
+}
+
+.thumbnail{
+    border: solid 3px rgba(255,255,255,0.9);
+    border-radius: 15px;
+    cursor: pointer;                /* łapka po nasunieciu na zdjęcie */
+    margin: 32px;
+    box-shadow: 0 0 48px 1px rgba(0, 0, 0, 0.8);    /* cien wokoł diva */
+    max-width: 300px;
+    max-height: 200px;
+    overflow: hidden;               /*ukrywanie rogow zdjecia */
+    transform: scale(1);
+    transition: transform 0.3s;
+}
+
+.thumbnail:hover{               /* pseudo animacja zdjecia */
+    transform: scale(1.2);
+}
+
+.thumbnail img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.thumbnail img:focus-visible,
+.thumbnail img:focus {
+    border: solid 5px  rgb(87, 152, 250);
+}
+
+.popup{
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);    /* blurowanie tła */
+    align-content: center;
+    animation: fadeIn 0.5s;
+    justify-content: center;
+    flex-wrap: wrap;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    left: 0;
+    top: 0;
+    position: fixed;        /* popup przypiety do ekranu */
+}
+
+.popup.hidden{
+    display: none;          /*znikanie popupu przed kliknieciem */
+}
+
+.popup.fade-out{
+    animation: fadeOut 0.5s both;   /*nieweluje mrugniecia zdjec */
+}
+
+.popup__img{
+    max-height: 80%;
+    max-width: 80%;
+}
+
+.popup__close{
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-size: 22px;
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.3s ;
+}
+
+.popup__close:hover{
+    opacity: 1;
+}
+
+.popup__arrow{
+    border: none;
+    position: absolute;
+    cursor: pointer;
+    border-radius: 50%;
+    line-height: 2rem;
+    top: 50%;
+    opacity: 0.5;
+    font-size: 2rem;
+    height: 2rem;
+    width: 2rem;
+    transition: opacity 0.3s ;
+}
+
+.popup__arrow:hover{
+    opacity: 1;
+}
+
+.popup__arrow--left{
+    left: 5%;
+    transform: rotate(-180deg);         /*obrot gwiazdki */
+}
+
+.popup__arrow--right{
+    right: 5%;
+}
+
+/*cos czego nie czaje */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+
